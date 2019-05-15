@@ -32,35 +32,16 @@ module.exports = {
       {
         from: "./src/serviceworker.js",
         to: path.resolve(__dirname, "docs")
+      },
+      {
+        // this is optimized to be loaded for github
+        from: "./src/css",
+        to: path.resolve(__dirname, "docs/css")
       }
     ]),
     new HtmlWebpackPlugin({
       title: "PERSPECTIVE",
       template: "./src/index.html"
-    }),
-    new MiniCssExtractPlugin({
-      filename: devMode ? "[name].css" : "[name].[hash].css",
-      chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              // you can specify a publicPath here
-              // by default it uses publicPath in webpackOptions.output
-              publicPath: "../css/",
-              hmr: process.env.NODE_ENV === "development",
-              reloadAll: true
-            }
-          },
-          "css-loader"
-        ]
-      }
-    ]
-  }
+  ]
 };
