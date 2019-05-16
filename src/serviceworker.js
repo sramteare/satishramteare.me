@@ -23,22 +23,26 @@ self.addEventListener("activate", evt => {
 
 self.addEventListener("fetch", evt => {
   console.log("[ServiceWorker] Fetch", evt.request.url);
+  // load from
   evt.respondWith(
-    fetch(evt.request)
-      .then(resp => {
-        let respClone = resp.clone();
-        if (resp.status === 200) {
-          console.log("[ServiceWorker] Updating cache");
-          caches
-            .open(CACHE_NAME)
-            .then(cache => cache.put(evt.request.url, respClone));
-        }
-        return resp;
-      })
-      .catch(err => {
-        console.log(`[ServiceWorker] Error - ${err}`);
-        console.log("[ServiceWorker] loading from cache if available.");
+    (() => {
+      if (navigator.onLine) {
+        return fetch(evt.request).then(resp => {
+          let respClone = resp.clone();
+          if (resp.status === 200) {
+            console.log("[ServiceWorker] Updating cache");
+            caches
+              .open(CACHE_NAME)
+              .then(cache => cache.put(evt.request.url, respClone));
+          }
+          return resp;
+        });
+      } else {
+        console.log(
+          "[ServiceWorker] is offline. Loading from cache if available."
+        );
         return caches.match(evt.request).then(resp => resp);
-      })
+      }
+    })() // immediate call
   );
 });
