@@ -35,11 +35,6 @@ module.exports = {
       },
       {
         // this is optimized to be loaded for github
-        from: "./src/css",
-        to: path.resolve(__dirname, "docs/css")
-      },
-      {
-        // this is optimized to be loaded for github
         from: "./src/fonts",
         to: path.resolve(__dirname, "docs/fonts")
       }
@@ -47,7 +42,30 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "PERSPECTIVE",
       template: "./src/index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     })
-    // note cannot use minification plugin cause of minifier plugin problems with relative path required for hosting as github page.
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              publicPath: "./",
+              hmr: process.env.NODE_ENV === "development",
+              removeCR: true
+            }
+          },
+          "css-loader"
+        ]
+      }
+    ]
+  }
 };
