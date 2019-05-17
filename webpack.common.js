@@ -37,11 +37,17 @@ module.exports = {
         // this is optimized to be loaded for github
         from: "./src/css",
         to: path.resolve(__dirname, "docs/css")
+      },
+      {
+        // this is optimized to be loaded for github
+        from: "./src/fonts",
+        to: path.resolve(__dirname, "docs/fonts")
       }
     ]),
     new HtmlWebpackPlugin({
       title: "PERSPECTIVE",
       template: "./src/index.html"
     })
+    // note cannot use minification plugin cause of minifier plugin problems with relative path required for hosting as github page.
   ]
 };
