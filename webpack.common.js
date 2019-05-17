@@ -10,7 +10,7 @@ const devMode = process.env.NODE_ENV !== "production";
 module.exports = {
   entry: { app: "./src/js/app.js" },
   output: {
-    path: path.resolve(__dirname, "docs"),
+    path: path.resolve(__dirname, "public"),
     filename: "[name].bundle.js"
   },
   plugins: [
@@ -19,24 +19,24 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: "./src/images",
-        to: path.resolve(__dirname, "docs/images")
+        to: path.resolve(__dirname, "public/images")
       },
       {
         from: "./src/manifest.json",
-        to: path.resolve(__dirname, "docs")
+        to: path.resolve(__dirname, "public")
       },
       {
         from: "./src/favicon.ico",
-        to: path.resolve(__dirname, "docs")
+        to: path.resolve(__dirname, "public")
       },
       {
         from: "./src/serviceworker.js",
-        to: path.resolve(__dirname, "docs")
+        to: path.resolve(__dirname, "public")
       },
       {
         // this is optimized to be loaded for github
         from: "./src/fonts",
-        to: path.resolve(__dirname, "docs/fonts")
+        to: path.resolve(__dirname, "public/fonts")
       }
     ]),
     new HtmlWebpackPlugin({
