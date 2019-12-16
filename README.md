@@ -16,3 +16,6 @@ Trying out the new technalogies in web front development.
 * CSS Animation - Trying out keyframes for trippy effect.
 
 * Grid layout - css - Tryingout Grid layout to layout the website.
+
+* npm run-script - Adding npm run-script to webpack build on code and run webpack local server
+
