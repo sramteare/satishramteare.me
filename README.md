@@ -2,6 +2,7 @@ https://sramteare.github.io
 My website, accessible at https://sramteare.github.io
 
 This website can be accessed in local instance just by installing node and git on your local and running following {} steps,
+
 git clone https://github.com/sramteare/satishramteare.me.git
 npm run build
 npm run start
