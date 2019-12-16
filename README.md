@@ -1,6 +1,11 @@
 https://sramteare.github.io
 My website, accessible at https://sramteare.github.io
 
+This website can be accessed in local instance just by installing node and git on your local and running following {} steps,
+git clone https://github.com/sramteare/satishramteare.me.git
+npm run build
+npm run start
+
 Trying out the new technalogies in web front development.
 
 * ES6 - Trying out ES6 to develop some of the aspects of the page.
@@ -11,7 +16,7 @@ Trying out the new technalogies in web front development.
 
 * Webpack Bundler - Trying out webpack bundler with bable plugin and ES6 modules, for bundling and supporting ES6 on older browsers.
 
-* node scripts - adding node scrupts to building and starting a server on local.
+* npm scripts - adding node npm scripts(tasks) to building and starting a server on local.
 
 * CSS Animation - Trying out keyframes for trippy effect.
 
