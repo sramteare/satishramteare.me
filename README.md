@@ -1,12 +1,12 @@
 https://sramteare.github.io
 My website, accessible at https://sramteare.github.io
 
-This website can be accessed in local instance just by installing node and git on your local and running following {} steps,
-
-git clone https://github.com/sramteare/satishramteare.me.git
-npm run build
-npm run start
-
+This website can be accessed in local instance just by installing node and git on your local and running following 3 steps,
+```shell
+git clone https://github.com/sramteare/satishramteare.me.git  
+npm run build  
+npm run start  
+```
 Trying out the new technalogies in web front development.
 
 * ES6 - Trying out ES6 to develop some of the aspects of the page.
