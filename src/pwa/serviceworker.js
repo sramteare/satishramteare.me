@@ -34,6 +34,7 @@ self.addEventListener("fetch", evt => {
   evt.respondWith(
     caches.match(evt.request).then(resp => {
       if (resp) {
+        //TODO: needs better handling for offline.
         if (navigator.onLine) {
           doFetch(evt);
         }
